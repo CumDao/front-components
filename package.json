@@ -1,17 +1,40 @@
 {
   "name": "arisen-front-components",
-  "private": true,
-  "version": "0.0.0",
+  "author": "arisen_f",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/main.d.ts",
+      "default": "./dist/main.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CumDao/front-components.git"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "dev": "vite",
+    "prepublishOnly": "npm run build",
     "build": "tsc -b ./tsconfig.lib.json && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pub": "npm run build && npm version patch && npm publish"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+  "peerDependencies": {
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "@mui/icons-material": "*",
+    "@mui/material": "*",
+    "react": "*",
+    "react-dom": "*"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -22,7 +45,10 @@
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
+    "glob": "^11.0.0",
     "globals": "^15.14.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",

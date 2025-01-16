@@ -1,1 +1,1 @@
-export { Drawer } from './conponents/Drawer';
+export { ResizableDrawer } from './conponents/ResizableDrawer';
