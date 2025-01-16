@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 // import { Drawer } from 'arisen-front-components';
 import { useState } from 'react';
-import { ResizableDrawer } from '../../../lib/conponents/ResizableDrawer/ResizableDrawer';
+import { ResizableDrawer } from '../../../lib/main';
 import classes from './TestDrawer.module.css';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -12,7 +12,7 @@ const TestDrawer = () => {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button variant="outlined" onClick={handleOpen}>
         open
       </Button>
       <ResizableDrawer
