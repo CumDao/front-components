@@ -1,5 +1,7 @@
 # React Component Library (Based on MUI)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![NPM Version](https://img.shields.io/npm/v/arisen-front-components) ![NPM Downloads](https://img.shields.io/npm/dt/arisen-front-components) ![GitHub Repo stars](https://img.shields.io/github/stars/CumDao/front-components) [![storybook](https://img.shields.io/badge/Storybook-deployed-ff4685)](https://cumdao.github.io/front-components)
+
 This is a React component library built on top of [Material-UI (MUI)](https://mui.com/), designed to provide customizable and reusable components for your applications. The library is currently in development, with the first component being `ResizableDrawer`.
 
 ---
@@ -96,12 +98,20 @@ The `ResizableDrawer` is a flexible and customizable drawer component with resiz
 
 #### Props
 
-| Name          | Type     | Default   | Description                                       |
-|---------------|----------|-----------|---------------------------------------------------|
-| `initialWidth` | `number` | `300`     | The initial width of the drawer in pixels.        |
-| `minWidth`    | `number` | `200`     | The minimum width of the drawer in pixels.        |
-| `maxWidth`    | `number` | `600`     | The maximum width of the drawer in pixels.        |
-| `content`     | `ReactNode` | `null`  | The content to display inside the drawer.         |
+| Name                | Type                 | Default                                   | Description                                                             |
+|---------------------|----------------------|-------------------------------------------|-------------------------------------------------------------------------|
+| `open`              | `boolean`            | `false`                                   | Controls whether the drawer is open or closed.                          |
+| `onClose`           | `() => void`         | `undefined`                               | Callback fired when the drawer is requested to be closed.               |
+| `onOpen`            | `() => void`         | `undefined`                               | Callback fired when the drawer is requested to be opened.               |
+| `className`         | `string`             | `undefined`                               | Custom CSS class applied to the drawer.                                 |
+| `header`            | `ReactNode`          | `undefined`                               | Optional header content rendered at the top of the drawer.              |
+| `children`          | `ReactNode`          | `undefined`                               | Content displayed in the main body of the drawer.                       |
+| `footer`            | `ReactNode`          | `undefined`                               | Optional footer content rendered at the bottom of the drawer.           |
+| `width`             | `number`             | `60% of viewport width`                   | The initial width of the drawer.                                        |
+| `minWidth`          | `number`             | `350`                                     | The minimum width of the drawer in pixels.                              |
+| `maxWidth`          | `number`             | `Viewport width minus 100px`              | The maximum width of the drawer in pixels.                              |
+| `draggerIcon`       | `ReactNode`          | `<DragIndicatorIcon />`                   | Icon displayed for the dragger.                                         |
+| `draggerClassName`  | `string`             | `undefined`                               | Custom CSS class for the dragger element.                               |
 
 #### Example
 

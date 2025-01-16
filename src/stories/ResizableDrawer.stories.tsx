@@ -151,3 +151,125 @@ export const WithResizeProps: Story = {
     maxWidth: 500,
   },
 };
+
+export const WithFooterHeaderProps: Story = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleToggleDrawer = () => {
+      setIsOpen(!isOpen);
+    };
+
+    return (
+      <div>
+        <Button variant="contained" onClick={handleToggleDrawer}>
+          open
+        </Button>
+        <ResizableDrawer
+          {...args}
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onOpen={() => setIsOpen(true)}
+          header={
+            <div className={classes.header}>
+              <Button variant="contained" size="small">
+                Вход
+              </Button>
+              <Button variant="contained" size="small">
+                Регистрация
+              </Button>
+            </div>
+          }
+          footer={
+            <div
+              style={{
+                fontWeight: 400,
+                fontSize: 10,
+                textAlign: 'center',
+                width: '100%',
+              }}
+            >
+              v0.0.1
+            </div>
+          }
+        >
+          <div>
+            <p>--------</p>
+            <p>children</p>
+            <p>resize</p>
+            <p>drawer</p>
+            <p>content</p>
+            <p>--------</p>
+          </div>
+        </ResizableDrawer>
+      </div>
+    );
+  },
+  args: {
+    width: 300,
+    minWidth: 200,
+    maxWidth: 500,
+  },
+};
+
+export const WithCustomDraggerProps: Story = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleToggleDrawer = () => {
+      setIsOpen(!isOpen);
+    };
+
+    return (
+      <div>
+        <Button variant="contained" onClick={handleToggleDrawer}>
+          open
+        </Button>
+        <ResizableDrawer
+          {...args}
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onOpen={() => setIsOpen(true)}
+          header={
+            <div className={classes.header}>
+              <Button variant="contained" size="small">
+                sign in
+              </Button>
+              <Button variant="contained" size="small">
+                sign up
+              </Button>
+            </div>
+          }
+          footer={
+            <div
+              style={{
+                fontWeight: 400,
+                fontSize: 10,
+                textAlign: 'center',
+                width: '100%',
+              }}
+            >
+              v0.0.1
+            </div>
+          }
+          draggerClassName={classes.dragger}
+          draggerIcon={<MoreVertIcon />}
+        >
+          <div>
+            <p>--------</p>
+            <p>children</p>
+            <p>resize</p>
+            <p>drawer</p>
+            <p>content</p>
+            <p>--------</p>
+          </div>
+        </ResizableDrawer>
+      </div>
+    );
+  },
+  args: {
+    width: 300,
+    minWidth: 200,
+    maxWidth: 500,
+  },
+};
