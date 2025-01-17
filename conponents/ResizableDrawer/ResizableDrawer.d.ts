@@ -4,11 +4,12 @@ interface ResizableDrawerProps extends MUIDrawerProps {
     header?: ReactNode;
     children?: ReactNode;
     footer?: ReactNode;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
+    startPosition?: number;
+    minSize?: number;
+    maxSize?: number;
     draggerIcon?: ReactNode;
-    draggerClassName?: string | undefined;
+    draggerClassName?: string;
+    paperClassName?: string;
 }
-export declare const ResizableDrawer: ({ open, onClose, onOpen, className, children, header, footer, width, minWidth, maxWidth, draggerIcon, draggerClassName, }: ResizableDrawerProps) => import("react/jsx-runtime").JSX.Element;
+export declare const ResizableDrawer: ({ open, onClose, onOpen, className, anchor, children, header, footer, startPosition, minSize, maxSize, draggerIcon, draggerClassName, paperClassName, }: ResizableDrawerProps) => import("react/jsx-runtime").JSX.Element;
 export {};

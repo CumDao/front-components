@@ -1,1 +1,1 @@
-export declare const useResizableDrawer: (initialWidth: number, minWidth: number, maxWidth: number) => [number, (e: React.MouseEvent) => void];
+export declare const useResizableDrawer: (initialSize: number, minSize: number, maxSize: number, anchor?: "left" | "top" | "right" | "bottom" | undefined) => [number, (e: React.MouseEvent) => void];
