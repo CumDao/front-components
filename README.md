@@ -53,6 +53,7 @@ const App = () => {
         open={isOpen}
         onOpen={handleOpen}
         onClose={handleClose}
+        anchor="left"
         header={
           <div className={classes.header}>
             <Button variant="contained" size="small">
@@ -112,6 +113,7 @@ The `ResizableDrawer` is a flexible and customizable drawer component with resiz
 | `maxSize`           | `number`             | `Viewport width minus 100px`              | The maximum width of the drawer in pixels.                              |
 | `draggerIcon`       | `ReactNode`          | `<DragIndicatorIcon />`                   | Icon displayed for the dragger.                                         |
 | `draggerClassName`  | `string`             | `undefined`                               | Custom CSS class for the dragger element.                               |
+| `anchor`  | `top` `right` `bottom` `left`  | `right`                                   | Anchor position of the drawer.                                          |
 
 #### Example
 
@@ -120,6 +122,7 @@ The `ResizableDrawer` is a flexible and customizable drawer component with resiz
   open={isOpen}
   onOpen={handleOpen}
   onClose={handleClose}
+  anchor="right"
   header={
     <div className={classes.header}>
       <Button variant="contained" size="small">
