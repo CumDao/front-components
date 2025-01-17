@@ -14,15 +14,20 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    width: {
-      control: { type: 'number', min: 100, max: 1000, step: 10 },
-      description: 'Width of the drawer in pixels.',
+    anchor: {
+      options: ['left', 'top', 'right', 'bottom'],
+      control: { type: 'radio' },
+      description: 'Anchor position of the drawer.',
     },
-    minWidth: {
+    startPosition: {
+      control: { type: 'number', min: 100, max: 1000, step: 10 },
+      description: 'Start position of the drawer in pixels.',
+    },
+    minSize: {
       control: { type: 'number', min: 100, max: 500, step: 10 },
       description: 'Minimum width of the drawer in pixels.',
     },
-    maxWidth: {
+    maxSize: {
       control: { type: 'number', min: 300, max: 1000, step: 10 },
       description: 'Maximum width of the drawer in pixels.',
     },
@@ -58,11 +63,16 @@ const meta = {
       control: false,
       description: 'ustom className for the dragger handle.',
     },
+    paperClassName: {
+      control: false,
+      description: 'ustom className for the drawer papper.',
+    },
   },
   args: {
-    width: undefined,
-    minWidth: undefined,
-    maxWidth: undefined,
+    anchor: 'right',
+    startPosition: undefined,
+    minSize: undefined,
+    maxSize: undefined,
     onClose: () => {},
     onOpen: () => {},
   },
@@ -89,6 +99,29 @@ export const Default: Story = {
           open={isOpen}
           onClose={() => setIsOpen(false)}
           onOpen={() => setIsOpen(true)}
+          header={
+            <div className={classes.header}>
+              <Button variant="contained" size="small">
+                sign in
+              </Button>
+              <Button variant="contained" size="small">
+                sign up
+              </Button>
+            </div>
+          }
+          footer={
+            <div
+              style={{
+                fontWeight: 400,
+                fontSize: 10,
+                textAlign: 'center',
+                width: '100%',
+              }}
+            >
+              v0.0.1
+            </div>
+          }
+          draggerClassName={classes.dragger}
         >
           <div>
             <p>--------</p>
@@ -103,14 +136,10 @@ export const Default: Story = {
     );
   },
   args: {
-    width: undefined,
-    minWidth: undefined,
-    maxWidth: undefined,
-  },
-  argTypes: {
-    width: { control: false },
-    minWidth: { control: false },
-    maxWidth: { control: false },
+    anchor: 'right',
+    startPosition: 300,
+    minSize: 200,
+    maxSize: 500,
   },
 };
 
@@ -146,9 +175,9 @@ export const WithResizeProps: Story = {
     );
   },
   args: {
-    width: 300,
-    minWidth: 200,
-    maxWidth: 500,
+    startPosition: 300,
+    minSize: 200,
+    maxSize: 500,
   },
 };
 
@@ -206,9 +235,9 @@ export const WithFooterHeaderProps: Story = {
     );
   },
   args: {
-    width: 300,
-    minWidth: 200,
-    maxWidth: 500,
+    startPosition: 300,
+    minSize: 200,
+    maxSize: 500,
   },
 };
 
@@ -268,8 +297,8 @@ export const WithCustomDraggerProps: Story = {
     );
   },
   args: {
-    width: 300,
-    minWidth: 200,
-    maxWidth: 500,
+    startPosition: 300,
+    minSize: 200,
+    maxSize: 500,
   },
 };

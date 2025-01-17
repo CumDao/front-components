@@ -64,9 +64,9 @@ const App = () => {
           </div>
         }
         footer={<div>v0.0.1</div>}
-        width={300}
-        minWidth={200}
-        maxWidth={500}
+        startPosition={300}
+        minSize={200}
+        maxSize={500}
         draggerClassName={classes.dragger}
         draggerIcon={<MoreVertIcon />}
       >
@@ -107,9 +107,9 @@ The `ResizableDrawer` is a flexible and customizable drawer component with resiz
 | `header`            | `ReactNode`          | `undefined`                               | Optional header content rendered at the top of the drawer.              |
 | `children`          | `ReactNode`          | `undefined`                               | Content displayed in the main body of the drawer.                       |
 | `footer`            | `ReactNode`          | `undefined`                               | Optional footer content rendered at the bottom of the drawer.           |
-| `width`             | `number`             | `60% of viewport width`                   | The initial width of the drawer.                                        |
-| `minWidth`          | `number`             | `350`                                     | The minimum width of the drawer in pixels.                              |
-| `maxWidth`          | `number`             | `Viewport width minus 100px`              | The maximum width of the drawer in pixels.                              |
+| `wistartPositiondth`| `number`             | `60% of viewport width`                   | The initial width of the drawer.                                        |
+| `minSize`           | `number`             | `350`                                     | The minimum width of the drawer in pixels.                              |
+| `maxSize`           | `number`             | `Viewport width minus 100px`              | The maximum width of the drawer in pixels.                              |
 | `draggerIcon`       | `ReactNode`          | `<DragIndicatorIcon />`                   | Icon displayed for the dragger.                                         |
 | `draggerClassName`  | `string`             | `undefined`                               | Custom CSS class for the dragger element.                               |
 
@@ -131,9 +131,9 @@ The `ResizableDrawer` is a flexible and customizable drawer component with resiz
     </div>
   }
   footer={<div>v0.0.1</div>}
-  width={300}
-  minWidth={200}
-  maxWidth={500}
+  startPosition={300}
+  minSize={200}
+  maxSize={500}
   draggerClassName={classes.dragger}
   draggerIcon={<MoreVertIcon />}
 >

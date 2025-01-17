@@ -1,0 +1,40 @@
+.dragger {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.draggerRight {
+  cursor: col-resize;
+  width: 10px;
+  height: 100%;
+  left: -2.5px;
+  top: 0;
+}
+
+.draggerLeft {
+  cursor: col-resize;
+  width: 10px;
+  height: 100%;
+  top: 0;
+  right: 2.5px;
+}
+
+.draggerBottom {
+  cursor: row-resize;
+  height: 10px;
+  width: 100%;
+  top: 0;
+  right: 2.5px;
+}
+
+.draggerTop {
+  cursor: row-resize;
+  height: 10px;
+  width: 100%;
+  bottom: 0;
+  right: 2.5px;
+}

@@ -7,3 +7,7 @@
 .dragger {
   background-color: inherit;
 }
+
+.paper.paper {
+  background-color: rgb(211, 211, 211);
+}

@@ -12,13 +12,15 @@ const TestDrawer = () => {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleOpen}>
+      <Button variant="contained" onClick={handleOpen}>
         open
       </Button>
       <ResizableDrawer
         open={isOpen}
         onOpen={handleOpen}
         onClose={handleClose}
+        anchor="left"
+        paperClassName={classes.paper}
         header={
           <div className={classes.header}>
             <Button variant="contained" size="small">
@@ -41,9 +43,9 @@ const TestDrawer = () => {
             v0.0.1
           </div>
         }
-        width={300}
-        minWidth={200}
-        maxWidth={500}
+        startPosition={300}
+        minSize={200}
+        maxSize={500}
         draggerClassName={classes.dragger}
         draggerIcon={<MoreVertIcon />}
       >

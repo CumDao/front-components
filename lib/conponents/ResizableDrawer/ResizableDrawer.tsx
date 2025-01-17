@@ -7,24 +7,21 @@ import {
   useTheme,
 } from '@mui/material';
 import { SwipeableDrawerProps as MUIDrawerProps } from '@mui/material';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { ReactNode } from 'react';
 
 import { useResizableDrawer } from './hooks/useResizableDrawer';
-
-import classes from './ResizableDrawer.module.css';
-
-const MIN_WIDTH = 350;
+import Dragger from './subcomponents/Dragger';
 
 interface ResizableDrawerProps extends MUIDrawerProps {
   header?: ReactNode;
   children?: ReactNode;
   footer?: ReactNode;
-  width?: number;
-  minWidth?: number;
-  maxWidth?: number;
+  startPosition?: number;
+  minSize?: number;
+  maxSize?: number;
   draggerIcon?: ReactNode;
-  draggerClassName?: string | undefined;
+  draggerClassName?: string;
+  paperClassName?: string;
 }
 
 export const ResizableDrawer = ({
@@ -32,35 +29,43 @@ export const ResizableDrawer = ({
   onClose,
   onOpen,
   className,
+  anchor = 'right',
 
   children,
   header,
   footer,
 
-  width,
-  minWidth,
-  maxWidth,
+  startPosition = document.body.offsetWidth * 0.4,
+  minSize = 350,
+  maxSize = document.body.offsetWidth - 100,
 
   draggerIcon,
   draggerClassName,
+  paperClassName,
 }: ResizableDrawerProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [drawerWidth, handleMouseDown] = useResizableDrawer(
-    width ?? document.body.offsetWidth * 0.6,
-    minWidth ?? MIN_WIDTH,
-    maxWidth ?? document.body.offsetWidth - 100,
+  const dragOrientation = anchor === 'left' || anchor === 'right' ? 'horizontal' : 'vertical';
+
+  const [drawerSize, handleMouseDown] = useResizableDrawer(
+    startPosition ?? document.body.offsetWidth * 0.6,
+    minSize,
+    maxSize ?? document.body.offsetWidth - 100,
+    anchor,
   );
 
   return (
     <SwipeableDrawer
       className={className}
       PaperProps={{
-        classes: { root: classes.paper },
-        style: { width: `${drawerWidth}px` },
+        classes: { root: paperClassName },
+        style:
+          dragOrientation === 'horizontal'
+            ? { width: `${drawerSize}px`, overflow: 'hidden' }
+            : { height: `${drawerSize}px`, overflow: 'hidden' },
       }}
-      anchor="right"
+      anchor={anchor}
       onOpen={onOpen}
       onClose={onClose}
       open={open}
@@ -75,9 +80,12 @@ export const ResizableDrawer = ({
       <DialogContent>{children}</DialogContent>
       {footer && <DialogActions>{footer}</DialogActions>}
       {!isMobile && (
-        <div onMouseDown={handleMouseDown} className={`${draggerClassName} ${classes.dragger}`}>
-          {draggerIcon ?? <DragIndicatorIcon />}
-        </div>
+        <Dragger
+          handleMouseDown={handleMouseDown}
+          anchor={anchor}
+          draggerClassName={draggerClassName}
+          draggerIcon={draggerIcon}
+        />
       )}
     </SwipeableDrawer>
   );
